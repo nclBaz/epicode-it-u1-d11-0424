@@ -1,6 +1,6 @@
 // **************************************** ES6 *********************************************
 
-// SPREAD OPERATOR
+// ------------------------ SPREAD OPERATOR ------------------------
 
 const obj1 = {
   name: "Aldo",
@@ -35,3 +35,17 @@ console.log(arr3)
 const arr4 = [4, 5, 6]
 const arr5 = [...arr4, 1000, ...arr1, 7] // anche qua conta l'ordine, ma chi arriva dopo NON sovrascrive chi arriva prima
 console.log(arr5)
+
+// ------------------------ REST PARAMETERS ------------------------
+const fun = function (separator, ...strings) {
+  console.log(strings) // strings rappresenta i rest parameters, nel body della funzione quindi sarà un array di parametri
+  let result = ""
+  for (let i = 0; i < strings.length; i++) {
+    result += strings[i] + separator
+  }
+  return result
+}
+
+console.log(fun(" "))
+console.log(fun(" ", "Ciao", "a"))
+console.log(fun("**", "Ciao", "a", "tutti"))
