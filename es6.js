@@ -49,3 +49,54 @@ const fun = function (separator, ...strings) {
 console.log(fun(" "))
 console.log(fun(" ", "Ciao", "a"))
 console.log(fun("**", "Ciao", "a", "tutti"))
+
+// ------------------------ DESTRUCTURING ------------------------
+const dog = {
+  name: "Fido",
+  color: "Brown",
+  age: 10,
+  canFly: false,
+}
+
+// Metodo vecchio
+// const name = dog.name
+// const color = dog.color
+// const age = dog.age
+// const canFly = dog.canFly
+
+// Metodo destructuring
+const { age = 30, canFly, name, color, tailLength = 20 } = dog // ho ottenuto lo stesso identico risultato di sopra. Posso anche assegnare dei valori a queste nuove costanti, in modo che se viene trovato all'interno dell'oggetto quel valore allora prenderò quello, altrimenti ho comunque un valore di default
+console.log(name)
+console.log(age)
+console.log(color)
+console.log(tailLength)
+
+const f = function ({ name, age }) {
+  console.log("Name", name)
+  console.log("Age", age)
+}
+
+f(dog)
+
+const coordinates = [45.023, 10.2313]
+// Metodo vecchio
+// const latitude =  coordinates[0]
+// const longitude = coordinates[1]
+// Metodo nuovo con destructuring
+const [latitude, longitude] = coordinates // Concetto simile a quello degli oggetti ma qua invece di lavorare con i nomi delle proprietà, si creano queste nuove const a partire dall'indice
+
+// ------------------------ TEMPLATE LITERALS ------------------------
+const testoLungoSuPiuRighe = `pojaspdjaspdjpasd
+oasdihjoasjidojasd
+sokdjajasdkljsldjlasd
+lkasdlkasdjlasd` // <-- ` è il backtick su windows (SE SI HA IL TASTIERINO NUMERICO) si fa tenendo premuto alt + 96 (del tastierino numerico), se non si ha il tastierino numerico vedremo dopo un'alternativa. Su Mac invece è option + 9
+
+console.log("Il mio cane si chiama " + dog.name + ", ha un età di " + dog.age + ", è di colore " + dog.color + ", sa volare: " + dog.canFly)
+console.log(`Il mio cane si chiama ${dog.name}, 
+ha un età di ${dog.age},
+è di colore ${dog.color}, 
+sa volare: ${dog.canFly}`) // con ${} inserisco dei segnaposto all'interno del testo che poi prenderanno il valore dalla variabile specificata al loro interno
+
+const htmlElement = `<div>
+  <p>Ciao il mio cane si chiama ${dog.name}
+</div>`
